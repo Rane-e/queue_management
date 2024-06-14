@@ -6,6 +6,7 @@ use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SEOController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +19,6 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::middleware('auth')->group(function () {
     Route::post('/queue/{subject}/join', [QueueController::class, 'joinQueue'])->name('queue.join');
@@ -38,7 +36,7 @@ Route::middleware(['auth', 'is_admin'])->prefix('admin')->group(function() {
     Route::post('/queue/update', [AdminController::class, 'updateQueue'])->name('admin.queue.update');
 });
 
-    Route::get('/', [SubjectController::class, 'index'])->name('home');
+    Route::get('/', [SEOController::class, 'index'])->name('home');
 Route::get('/subjects/{subject}', [SubjectController::class, 'show'])->name('subjects.show');
 
 

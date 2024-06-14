@@ -1,29 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+@extends('layouts.app')
+@section('content')
 <div class="container">
-@if ($userName)
-        <h1>Welcome, {{ $userName }}</h1>
-        <form action="{{ route('logout') }}" method="post">
-                                @csrf
-            <button>logout</button>
-        </form>
-    @else
-        <h1>Welcome to the Subject Queue</h1>
-        <form action="{{ route('login') }}" method="get">
-                                @csrf
-            <button>login</button>
-        </form>
-        <form action="{{ route('register') }}" method="get">
-        @csrf
-            <button>reg</button>
-        </form>
-    @endif
+
     <h1>{{ $subject->name }}</h1>
     <h2>Queue</h2>
     <table class="table">
@@ -77,5 +55,4 @@
         @endif
     @endif
 </div>
-</body>
-</html>
+@endsection
